@@ -1,5 +1,5 @@
 
-# My Interactive Terminal Website Project
+# Interactive Web-Terminal Project
 
 ## Introduction
 
