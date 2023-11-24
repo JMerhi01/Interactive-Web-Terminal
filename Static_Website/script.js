@@ -91,3 +91,8 @@ function executeCommand(command) {
             break;
     }
 }
+
+function scrollTerminalOutputToEnd() {
+    let terminalOutput = document.getElementById('terminal-output');
+    terminalOutput.scrollTop = terminalOutput.scrollHeight;
+}
