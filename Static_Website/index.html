@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JMerhi Terminal</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body onclick="focusOnTerminal()">
+    <pre id="title">
+       _                    __                    __  __                 _       _   
+      | |                  / _|                  |  \/  |               | |     (_)  
+      | |   __ _    __ _  | |_    __ _   _ __    | \  / |   ___   _ __  | |__    _   
+  _   | |  / _` |  / _` | |  _|  / _` | | '__|   | |\/| |  / _ \ | '__| | '_ \  | |  
+ | |__| | | (_| | | (_| | | |   | (_| | | |      | |  | | |  __/ | |    | | | | | |  
+  \____/   \__,_|  \__,_| |_|    \__,_| |_|      |_|  |_|  \___| |_|    |_| |_| |_|  
+    </pre>
+    <div id="welcome-message">
+        Welcome to my interactive web terminal.<br>
+        For a list of available commands, type 'help'.
+    </div>
+    <div id="terminal">
+        <div id="terminal-output"></div>
+        <div id="command">
+            <div id="liner">
+                <span id="typer"></span>
+                <span id="cursor">█</span>
+                <textarea id="texter" onkeyup="handleInput(event)" autofocus></textarea>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
