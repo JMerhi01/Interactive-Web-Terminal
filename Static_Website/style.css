@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    padding: 20px;
+    background: #211D1B;
+    color: #519975;
+    font-family: monospace;
+    font-size: 16px;
+    min-height: 100vh;
+}
+
+#title {
+    color: #73ABAD;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#terminal {
+    border: 1px solid #519975;
+    padding: 10px;
+    background: black;
+    height: 40vh; /* 40% of the viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
