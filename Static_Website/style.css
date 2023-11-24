@@ -23,3 +23,19 @@ body {
     flex-direction: column;
     justify-content: space-between;
 }
+
+#terminal-output {
+    overflow-y: auto;
+    flex-grow: 1;
+    margin-bottom: 10px;
+}
+
+#command {
+    display: flex;
+    align-items: center;
+}
+
+#liner::before {
+    content: "visitor@jmerhi.com:~$ ";
+    color: #519975;
+}
