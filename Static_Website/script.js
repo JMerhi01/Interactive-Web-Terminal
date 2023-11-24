@@ -48,3 +48,22 @@ function handleInput(event) {
         }
     }
 }
+
+function handleSecretPassword(command) {
+    let terminalOutput = document.getElementById('terminal-output');
+    if (command === "123") {
+        terminalOutput.innerHTML += `<p>Correct password. Authentication successful!</p>`;
+        terminalOutput.innerHTML += `<p>01000100 01100101 01100110 01101001 01101110 01101001 01110100 01100101 01101100 01111001 01110011 01101000 01101111 01110101 01101100 01100100 01101000 01100001 01110110 01100101 01110011 01110100 01110101 01100011 01101011 01110111 01101001 01110100 01101000 01010011 01010011 01001000 00101110</p>`;
+        isEnteringSecret = false;
+        secretAttempts = 0;
+    } else {
+        secretAttempts++;
+        if (secretAttempts < 3) {
+            terminalOutput.innerHTML += `<p>Incorrect password. Try again:</p>`;
+        } else {
+            terminalOutput.innerHTML += `<p>Incorrect password. Secret command locked out. Try again later.</p>`;
+            isEnteringSecret = false;
+            secretAttempts = 0;
+        }
+    }
+}
