@@ -44,7 +44,7 @@ function handleInput(event) {
             else if (event.key === 'ArrowDown' && historyIndex < commandHistory.length - 1) historyIndex++;
 
             texter.value = commandHistory[historyIndex];
-            typer.textContent = commandHistory[historyIndex]
+            typer.textContent = commandHistory[historyIndex];
         }
     }
 }
