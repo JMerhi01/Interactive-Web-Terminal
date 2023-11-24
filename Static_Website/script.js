@@ -88,6 +88,6 @@ function executeCommand(command) {
             break;
         default:
             terminalOutput.innerHTML += `<p>bash: ${command}: command not found</p>`;
-            brea
+            break
     }
 }
