@@ -67,3 +67,27 @@ function handleSecretPassword(command) {
         }
     }
 }
+
+function executeCommand(command) {
+    let terminalOutput = document.getElementById('terminal-output');
+    switch (command.toLowerCase()) {
+        case 'help':
+            terminalOutput.innerHTML += `<p>Available commands: aboutme, showcv, github, secret, clear</p>`;
+            break;
+        case 'aboutme':
+            terminalOutput.innerHTML += `<p>Hello! My name is Jaafar, I'm a DevOps engineer pursuing a dynamic career, specializing in automation and creating efficient pipelines. Check out my GitHub to have a glimpse of my journey.</p>`;
+            break;
+        case 'github':
+            window.open('https://github.com/JMerhi01', '_blank');
+            break;
+        case 'showcv':
+            window.open('showcv.html', '_blank');
+            break;
+        case 'clear':
+            terminalOutput.innerHTML = '';
+            break;
+        default:
+            terminalOutput.innerHTML += `<p>bash: ${command}: command not found</p>`;
+            brea
+    }
+}
