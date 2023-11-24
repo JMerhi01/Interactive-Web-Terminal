@@ -39,3 +39,24 @@ body {
     content: "visitor@jmerhi.com:~$ ";
     color: #519975;
 }
+
+#cursor {
+    background-color: #73ABAD;
+    opacity: 1;
+    animation: blinker 1s linear infinite;
+    width: 10px;
+    height: 1.5em;
+    display: inline-block;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+
+textarea#texter {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+}
