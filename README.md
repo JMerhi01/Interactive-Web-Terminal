@@ -48,4 +48,4 @@ In this project, I built an interactive resume website using HTML and CSS, hoste
 
 - **Cloudfront** for DNS resolution and caching content for secure and fast access. 
 
-- **Certificate Manager** to register domains so I can enable HTTPS
+- **Certificate Manager** to provision and manage a SSL/TLS certificate so I can enable HTTPS.
