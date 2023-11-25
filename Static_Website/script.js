@@ -96,3 +96,10 @@ function scrollTerminalOutputToEnd() {
     let terminalOutput = document.getElementById('terminal-output');
     terminalOutput.scrollTop = terminalOutput.scrollHeight;
 }
+function focusOnTerminal() {
+    document.getElementById('texter').focus();
+}
+
+window.onload = function() {
+    focusOnTerminal();
+}
