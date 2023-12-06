@@ -1,21 +1,20 @@
-
 # Interactive Web-Terminal Project
 
 ## Introduction
 
-Welcome to the Interactive Terminal Website project! This project is an exciting blend of web development skills and cloud architecture, with a focus on AWS services. The core concept revolves around creating an interactive, dynamic resume as a terminal-style website, backed by robust backend infrastructure.
+Welcome to the Interactive Terminal Website project! This project is an exciting blend of web development skills and cloud architecture, with a focus on AWS services. The core concept revolves around creating an interactive, dynamic curriculum vitae (CV) as a terminal-style website, backed by robust backend infrastructure.
 
 ## Project Description
 
-In this project, I developed an interactive resume website using HTML, CSS, and JavaScript, hosted on Amazon S3. The site features a visitor counter that interacts with a backend database, showcasing my capabilities in managing dynamic content on cloud-based web hosting.
+In this project, I developed an interactive CV website using HTML, CSS, and JavaScript, hosted on Amazon S3. The site features a visitor counter that interacts with a backend database, showcasing my capabilities in managing dynamic content on cloud-based web hosting.
 
 ## Key Features
 
-- **HTML Resume**: A web-based resume coded in HTML.
+- **HTML CV**: A web-based CV coded in HTML.
 - **CSS Styling**: Enhanced visual appeal using CSS.
 - **Static Website on Amazon S3**: Deployment of web assets on AWS S3 for hosting.
 - **HTTPS Security**: Secured access through HTTPS, implemented using Amazon CloudFront.
-- **Custom Domain via Route 53**: Utilized Amazon Route 53 for domain management (`jmerhi.com`).
+- **Custom Domain via Route 53**: Utilised Amazon Route 53 for domain management (`jmerhi.com`).
 - **Dynamic Visitor Counter**: JavaScript-based visitor counting mechanism.
 - **Database Integration**: Used Amazon DynamoDB for storing and managing visitor data.
 - **API Implementation**: Created an API using AWS Lambda and API Gateway for backend communication.
@@ -25,7 +24,7 @@ In this project, I developed an interactive resume website using HTML, CSS, and 
 
 ## Infrastructure and Services
 
-### AWS Services Utilized
+### AWS Services Utilised
 
 - **Amazon S3**: Hosts website files (`index.html`, `style.css`, `script.js`, `showcv.html`).
 - **Amazon CloudFront**: Provides DNS resolution and content caching.
@@ -34,7 +33,7 @@ In this project, I developed an interactive resume website using HTML, CSS, and 
 - **Amazon DynamoDB**: Hosts `visitorcount` table with partition key `id`.
 - **AWS Lambda**: Powers `updateVisitorCount` function.
 - **Amazon API Gateway**: Manages `VisitorCountAPI` with `/count` route.
-#
+
 ### Technical Configuration
 
 ### CI/CD Pipeline Using GitHub Actions
@@ -48,7 +47,7 @@ In this project, I developed an interactive resume website using HTML, CSS, and 
 - **Key Components**:
   - **Checkout Action**: Checks out the code from the repository.
   - **Build Step**: Optional step for building the project (e.g., compiling SCSS to CSS, building a React app).
-  - **S3 Sync Action**: Utilizes `jakejarvis/s3-sync-action@master` to synchronize the project files with the specified S3 bucket. jakejarvis's s3-sync-action... is a marketplace action you can use to sync S3 buckets. 
+  - **S3 Sync Action**: Utilises `jakejarvis/s3-sync-action@master` to synchronise the project files with the specified S3 bucket. jakejarvis's s3-sync-action... is a marketplace action you can use to sync S3 buckets. 
 
 - **Configuration Details**:
   - **Trigger**: Configured to run on push events to the `main` branch (can be adjusted to other branches as needed).
@@ -60,19 +59,16 @@ In this project, I developed an interactive resume website using HTML, CSS, and 
   2. **Run Workflow**: The `deploy.yml` workflow is automatically triggered.
   3. **Build and Deploy**: The workflow checks out the latest code, optionally builds it, and then syncs it with the S3 bucket.
 
-
-
 ### DynamoDB Table
 ```json
 {
   "id": { "S": "mainPage" },
   "count": { "N": "0" }
 }
-```
 #
 ### Lambda Function Configuration
 
-### Lambda Function Configuration in Python
+#### Lambda Function Configuration in Python
 - **Function Name**: `updateVisitorCount`
 - **Runtime**: Python
 - **Functionality**:
@@ -84,8 +80,8 @@ In this project, I developed an interactive resume website using HTML, CSS, and 
   2. Included error handling and response formatting in line with API Gateway requirements.
   3. Packaged and deployed the function to AWS Lambda.
   4. Tested the function's integration with DynamoDB and API Gateway.
-#
-### API Gateway Configuration
+
+#### API Gateway Configuration
 
 - **API Name**: `VisitorCountAPI`
 - **Type**: HTTP API
@@ -97,13 +93,13 @@ In this project, I developed an interactive resume website using HTML, CSS, and 
   - Deployed to the `prod` stage.
 - **Security**:
   - Cooldown mechanism implemented to limit the rate of incoming requests.
-  - Can be further secured using API keys or IAM authorizers, depending on requirements.
+  - Can be further secured using API keys or IAM authorisers, depending on requirements.
 
 ## Infrastructure as Code Implementation
 
 ### Using AWS SAM
 - **Key Steps**:
-  1. Initialized an AWS SAM project using `sam init`.
+  1. Initialised an AWS SAM project using `sam init`.
   2. Defined serverless resources like Lambda functions and API Gateway in the `template.yaml`.
   3. Built the SAM application using `sam build`.
   4. Deployed the application to AWS using `sam deploy --guided`.
@@ -114,6 +110,6 @@ In this project, I developed an interactive resume website using HTML, CSS, and 
   - `variables.tf`: Contains variable definitions used in `main.tf`.
   - `outputs.tf`: Defines output variables for easy access to resource information.
 - **Deployment Steps**:
-  1. Initialized the Terraform project using `terraform init`.
+  1. Initialised the Terraform project using `terraform init`.
   2. Reviewed the planned infrastructure changes with `terraform plan`.
   3. Applied the configuration to create resources on AWS using `terraform apply`.
