@@ -60,3 +60,10 @@ textarea#texter {
     position: absolute;
     z-index: -1;
 }
+
+#visitor-count {
+    text-align: center;
+    color: #fff;
+    margin-top: 20px;
+    font-size: 18px;
+}
