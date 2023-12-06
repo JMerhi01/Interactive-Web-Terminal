@@ -67,3 +67,25 @@ textarea#texter {
     margin-top: 20px;
     font-size: 18px;
 }
+
+footer {
+    text-align: center;
+    color: #fff;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.help-table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.help-table td:first-child {
+    width: 150px; /* Adjust this width as needed for the desired spacing */
+    font-family: monospace;
+}
+
+.help-table td {
+    padding: 3px;
+    font-family: monospace;
+}
