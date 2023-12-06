@@ -15,7 +15,7 @@ jobs:
     - name: Deploy to S3
       uses: jakejarvis/s3-sync-action@master # S3 sync marketplace action
       with:
-        args: --acl public-read --follow-symlinks --delete
+        args: --delete --exclude '.github/*' --exclude '/GitHub-Actions' --exclude '/Lambda' --exclude '/Terraform' --exclude 'README.md'
       env:
         AWS_S3_BUCKET: jmerhi.com  
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }} # set up variables for security
