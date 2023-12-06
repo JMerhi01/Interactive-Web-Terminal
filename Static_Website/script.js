@@ -104,14 +104,34 @@ window.onload = function() {
     focusOnTerminal();
 }
 
+let lastKnownCount = 0; 
+
 function updateVisitorCount() {
-    fetch('#####') // This is where API URL goes (db)
+    fetch('https://p7t0o1t37i.execute-api.eu-west-2.amazonaws.com/prod/count')
         .then(response => response.json())
         .then(data => {
-            document.getElementById('visitor-number').textContent = data.count;
+            if (data.count !== undefined) {
+                localStorage.setItem('lastKnownCount', data.count);
+                document.getElementById('visitor-number').textContent = data.count;
+            } else {
+                const lastKnownCount = localStorage.getItem('lastKnownCount') || 'Loading...';
+                document.getElementById('visitor-number').textContent = lastKnownCount;
+            }
         })
-        .catch(error => console.error('Error fetching visitor count:', error));
+        .catch(error => {
+            console.error('Error fetching visitor count:', error);
+            const lastKnownCount = localStorage.getItem('lastKnownCount') || 'Loading...';
+            document.getElementById('visitor-number').textContent = lastKnownCount;
+        });
 }
+
+window.onload = function() {
+    focusOnTerminal();
+    updateVisitorCount(); 
+    const lastKnownCount = localStorage.getItem('lastKnownCount') || 'Loading...';
+    document.getElementById('visitor-number').textContent = lastKnownCount;
+}
+
 
 window.onload = function() {
     focusOnTerminal();
