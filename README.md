@@ -37,7 +37,32 @@ In this project, I developed an interactive resume website using HTML, CSS, and 
 #
 ### Technical Configuration
 
-#### DynamoDB Table
+### CI/CD Pipeline Using GitHub Actions
+
+- **Overview**:
+  - Automates the deployment of website content to an Amazon S3 bucket upon code changes pushed to the GitHub repository.
+
+- **Workflow File**:
+  - `deploy.yml`: Located in `.github/workflows`, this file defines the steps executed by GitHub Actions.
+
+- **Key Components**:
+  - **Checkout Action**: Checks out the code from the repository.
+  - **Build Step**: Optional step for building the project (e.g., compiling SCSS to CSS, building a React app).
+  - **S3 Sync Action**: Utilizes `jakejarvis/s3-sync-action@master` to synchronize the project files with the specified S3 bucket.
+
+- **Configuration Details**:
+  - **Trigger**: Configured to run on push events to the `main` branch (can be adjusted to other branches as needed).
+  - **AWS Credentials**: Uses AWS Access Key ID and Secret Access Key stored in GitHub Secrets for secure AWS operations.
+  - **S3 Bucket Configuration**: Specifies the target S3 bucket and region.
+
+- **Deployment Steps**:
+  1. **Push Changes**: Developers push changes to the designated branch on GitHub.
+  2. **Run Workflow**: The `deploy.yml` workflow is automatically triggered.
+  3. **Build and Deploy**: The workflow checks out the latest code, optionally builds it, and then syncs it with the S3 bucket.
+
+
+
+### DynamoDB Table
 ```json
 {
   "id": { "S": "mainPage" },
@@ -73,3 +98,22 @@ In this project, I developed an interactive resume website using HTML, CSS, and 
 - **Security**:
   - Cooldown mechanism implemented to limit the rate of incoming requests.
   - Can be further secured using API keys or IAM authorizers, depending on requirements.
+
+## Infrastructure as Code Implementation
+
+### Using AWS SAM
+- **Key Steps**:
+  1. Initialized an AWS SAM project using `sam init`.
+  2. Defined serverless resources like Lambda functions and API Gateway in the `template.yaml`.
+  3. Built the SAM application using `sam build`.
+  4. Deployed the application to AWS using `sam deploy --guided`.
+
+### Using Terraform
+- **Terraform Files**:
+  - `main.tf`: Defines AWS resources like DynamoDB table, Lambda function, and API Gateway.
+  - `variables.tf`: Contains variable definitions used in `main.tf`.
+  - `outputs.tf`: Defines output variables for easy access to resource information.
+- **Deployment Steps**:
+  1. Initialized the Terraform project using `terraform init`.
+  2. Reviewed the planned infrastructure changes with `terraform plan`.
+  3. Applied the configuration to create resources on AWS using `terraform apply`.
