@@ -7,18 +7,23 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest # github actions provides runner env for executing jobs, using ubuntu
+    runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4 # aka git clone
+    - uses: actions/checkout@v4
+
+    - name: Prepare Files for Deployment
+      run: |
+        mkdir temp-deploy
+        cp -R Static_Website/* temp-deploy/
 
     - name: Deploy to S3
-      uses: jakejarvis/s3-sync-action@master # S3 sync marketplace action
+      uses: jakejarvis/s3-sync-action@master
       with:
-        args: --acl public-read --follow-symlinks --delete
+        args: --delete --exclude 'temp-deploy/.git/*' --exclude 'temp-deploy/GitHub-Actions/*' --exclude 'temp-deploy/Lambda/*' --exclude 'temp-deploy/Terraform/*' --exclude 'temp-deploy/README.md'
       env:
         AWS_S3_BUCKET: jmerhi.com  
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }} # set up variables for security
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }} # set up variables for security
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: 'eu-west-2'  
-        SOURCE_DIR: './'  # root dir
+        SOURCE_DIR: 'temp-deploy'
