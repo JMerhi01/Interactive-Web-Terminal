@@ -15,10 +15,10 @@ jobs:
     - name: Deploy to S3
       uses: jakejarvis/s3-sync-action@master # S3 sync marketplace action
       with:
-        args: --delete --exclude '.github/*' --exclude '/GitHub-Actions' --exclude '/Lambda' --exclude '/Terraform' --exclude 'README.md'
+        args: --delete --exclude '.github/*' --exclude 'GitHub-Actions/*' --exclude 'Lambda/*' --exclude 'Terraform/*' --exclude 'README.md/'
       env:
         AWS_S3_BUCKET: jmerhi.com  
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }} # set up variables for security
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }} # set up variables for security
         AWS_REGION: 'eu-west-2'  
-        SOURCE_DIR: './'  # root dir
+        SOURCE_DIR: 'Static_website'  # root dir
