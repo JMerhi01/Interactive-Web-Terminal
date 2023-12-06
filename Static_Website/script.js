@@ -103,3 +103,17 @@ function focusOnTerminal() {
 window.onload = function() {
     focusOnTerminal();
 }
+
+function updateVisitorCount() {
+    fetch('#####') // This is where API URL goes (db)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('visitor-number').textContent = data.count;
+        })
+        .catch(error => console.error('Error fetching visitor count:', error));
+}
+
+window.onload = function() {
+    focusOnTerminal();
+    updateVisitorCount(); 
+}
