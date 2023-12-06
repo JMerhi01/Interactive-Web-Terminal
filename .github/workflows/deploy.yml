@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest # github actions provides runner env for executing jobs, using ubuntu
 
     steps:
-    - uses: actions/checkout@v2 # aka git clone
+    - uses: actions/checkout@v4 # aka git clone
 
     - name: Deploy to S3
       uses: jakejarvis/s3-sync-action@master # S3 sync marketplace action
