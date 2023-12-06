@@ -68,11 +68,26 @@ function handleSecretPassword(command) {
     }
 }
 
+function generateSpaces(maxLength, currentLength) {
+    let spacesNeeded = maxLength - currentLength;
+    return ' '.repeat(spacesNeeded > 0 ? spacesNeeded : 0);
+}
+
 function executeCommand(command) {
     let terminalOutput = document.getElementById('terminal-output');
     switch (command.toLowerCase()) {
         case 'help':
-            terminalOutput.innerHTML += `<p>Available commands: aboutme, showcv, github, secret, clear</p>`;
+            const helpText = `
+                <table class="help-table">
+                    <tr><td>- help</td><td>Lists available commands</td></tr>
+                    <tr><td>- about</td><td>Get to know me!</td></tr>
+                    <tr><td>- showcv</td><td>View my resume</td></tr>
+                    <tr><td>- github</td><td>Check out my GitHub</td></tr>
+                    <tr><td>- secret</td><td>Enter the secret command</td></tr>
+                    <tr><td>- clear</td><td>Clear the screen</td></tr>
+                </table>
+            `;
+            terminalOutput.innerHTML += `<p>${helpText}</p>`;
             break;
         case 'aboutme':
             terminalOutput.innerHTML += `<p>Hello! My name is Jaafar, I'm a DevOps engineer pursuing a dynamic career, specializing in automation and creating efficient pipelines. Check out my GitHub to have a glimpse of my journey.</p>`;
