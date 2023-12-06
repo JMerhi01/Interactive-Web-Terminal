@@ -81,7 +81,7 @@ footer {
 }
 
 .help-table td:first-child {
-    width: 150px; /* Adjust this width as needed for the desired spacing */
+    width: 150px; 
     font-family: monospace;
 }
 
