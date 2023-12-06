@@ -80,7 +80,7 @@ function executeCommand(command) {
             const helpText = `
                 <table class="help-table">
                     <tr><td>- help</td><td>Lists available commands</td></tr>
-                    <tr><td>- about</td><td>Get to know me!</td></tr>
+                    <tr><td>- aboutme</td><td>Get to know me!</td></tr>
                     <tr><td>- showcv</td><td>View my resume</td></tr>
                     <tr><td>- github</td><td>Check out my GitHub</td></tr>
                     <tr><td>- secret</td><td>Enter the secret command</td></tr>
