@@ -3,47 +3,38 @@ const dynamoDB = new AWS.DynamoDB.DocumentClient();
 
 exports.handler = async (event) => {
     const tableName = "visitorcount";
-    const visitorId = "mainPage";
-    const cooldownPeriod = 60000; 
+    const data = JSON.parse(event.body);
+    const uniqueVisitorId = data.visitorId;
 
-    const getResult = await dynamoDB.get({
+    const getParams = {
         TableName: tableName,
-        Key: { "id": visitorId }
-    }).promise();
+        Key: { "id": uniqueVisitorId }
+    };
 
-    const now = Date.now();
-    const lastVisit = getResult.Item?.lastVisit || 0;
-
-    if (now - lastVisit < cooldownPeriod) {
-        return { statusCode: 200, body: "On cooldown" };
+    const getResult = await dynamoDB.get(getParams).promise();
+    if (getResult.Item) {
+        return { statusCode: 200, body: "Visitor already counted" };
     }
 
-    
     const updateParams = {
         TableName: tableName,
-        Key: { "id": visitorId },
-        UpdateExpression: "SET #count = if_not_exists(#count, :start) + :inc, #lastVisit = :now",
-        ExpressionAttributeNames: {
-            "#count": "count",
-            "#lastVisit": "lastVisit"
-        },
-        ExpressionAttributeValues: {
-            ":inc": 1,
-            ":start": 0,
-            ":now": now
-        },
+        Key: { "id": "mainPage" },
+        UpdateExpression: "SET #count = if_not_exists(#count, :start) + :inc",
+        ExpressionAttributeNames: { "#count": "count" },
+        ExpressionAttributeValues: { ":inc": 1, ":start": 0 },
         ReturnValues: "UPDATED_NEW"
     };
 
     try {
         const updateResult = await dynamoDB.update(updateParams).promise();
+        await dynamoDB.put({
+            TableName: tableName,
+            Item: { "id": uniqueVisitorId }
+        }).promise();
         return {
             statusCode: 200,
-            body: JSON.stringify({ 
-                count: updateResult.Attributes.count,
-                lastUpdated: updateResult.Attributes.lastVisit 
-            }),
-            headers: { "Access-Control-Allow-Origin": "*" } 
+            body: JSON.stringify({ count: updateResult.Attributes.count }),
+            headers: { "Access-Control-Allow-Origin": "*" }
         };
     } catch (error) {
         console.error("Error updating DynamoDB:", error);
