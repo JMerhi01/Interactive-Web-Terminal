@@ -3,49 +3,71 @@
 
 ## Introduction
 
-Welcome to my Interactive Terminal Website project! This project was an exciting journey where I combined my web development skills with cloud architecture, focusing on AWS services. The core idea was to create an interactive, dynamic resume as a terminal-style website, backed by a robust backend and a CI/CD pipeline.
+Welcome to the Interactive Terminal Website project! This project is an exciting blend of web development skills and cloud architecture, with a focus on AWS services. The core concept revolves around creating an interactive, dynamic resume as a terminal-style website, backed by robust backend infrastructure.
 
 ## Project Description
 
-In this project, I built an interactive resume website using HTML and CSS, hosted on Amazon S3. The site features a visitor counter implemented with JavaScript and interacts with a backend database. I utilized various AWS services to develop a comprehensive understanding of cloud-based web hosting and dynamic content management.
+In this project, I developed an interactive resume website using HTML, CSS, and JavaScript, hosted on Amazon S3. The site features a visitor counter that interacts with a backend database, showcasing my capabilities in managing dynamic content on cloud-based web hosting.
 
 ## Key Features
 
-- **HTML Resume**: I coded my resume in HTML, displaying it on the web.
-- **CSS Styling**: I applied basic CSS to make the website visually appealing.
-- **Static Website on AWS S3**: I deployed my HTML resume as a static website on Amazon S3.
-- **HTTPS Security**: I secured the website using HTTPS with Amazon CloudFront.
-- **Custom DNS**: I set up a custom domain for my website, using Amazon Route 53.
-- **Visitor Counter**: I implemented a visitor counter on my website using JavaScript.
-- **Database Integration with DynamoDB**: I used Amazon DynamoDB to manage visitor count data.
-- **API via AWS Gateway and Lambda**: I created an API for database communication, utilizing AWS API Gateway and Lambda.
-- **Python Backend**: My Lambda functions were written in Python, employing the boto3 library.
-- **Automated Testing**: I included tests for my Python code to ensure its functionality.
-- **Infrastructure as Code (IaC)**: I managed AWS resources using AWS Serverless Application Model (SAM) and explored Terraform.
-- **Source Control with GitHub**: I used GitHub for versioning both frontend and backend code.
-- **CI/CD with GitHub Actions**: I set up CI/CD pipelines for automatic updates and deployments.
+- **HTML Resume**: A web-based resume coded in HTML.
+- **CSS Styling**: Enhanced visual appeal using CSS.
+- **Static Website on Amazon S3**: Deployment of web assets on AWS S3 for hosting.
+- **HTTPS Security**: Secured access through HTTPS, implemented using Amazon CloudFront.
+- **Custom Domain via Route 53**: Utilized Amazon Route 53 for domain management (`jmerhi.com`).
+- **Dynamic Visitor Counter**: JavaScript-based visitor counting mechanism.
+- **Database Integration**: Used Amazon DynamoDB for storing and managing visitor data.
+- **API Implementation**: Created an API using AWS Lambda and API Gateway for backend communication.
+- **Infrastructure as Code**: Managed AWS resources using AWS Serverless Application Model (SAM) and Terraform.
+- **Version Control**: Code maintained and version-controlled using GitHub.
+- **CI/CD Pipeline**: Automated deployment and updates using GitHub Actions.
 
+## Infrastructure and Services
 
+### AWS Services Utilized
+
+- **Amazon S3**: Hosts website files (`index.html`, `style.css`, `script.js`, `showcv.html`).
+- **Amazon CloudFront**: Provides DNS resolution and content caching.
+- **AWS Certificate Manager**: Manages SSL/TLS for HTTPS.
+- **Amazon Route 53**: Handles domain registration and DNS management.
+- **Amazon DynamoDB**: Hosts `visitorcount` table with partition key `id`.
+- **AWS Lambda**: Powers `updateVisitorCount` function.
+- **Amazon API Gateway**: Manages `VisitorCountAPI` with `/count` route.
 #
-### Let's Get Started
+### Technical Configuration
 
-### Interactive Web Terminal
-- index.html
-- style.css
-- script.js
+#### DynamoDB Table
+```json
+{
+  "id": { "S": "mainPage" },
+  "count": { "N": "0" }
+}
+```
+#
+### Lambda Function Configuration
 
-### HTML Resume
-- showcv.html
+- **Function Name**: `updateVisitorCount`
+- **Runtime**: Node.js
+- **Functionality**:
+  - Interacts with the DynamoDB table `visitorcount` to increment and retrieve the visitor count.
+  - Handles cooldown logic to prevent rapid successive updates.
+- **Code Packaging**:
+  - Includes `index.js` and `node_modules` folder.
+  - Zipped and uploaded to AWS Lambda.
+- **IAM Role**:
+  - Configured with necessary permissions for accessing DynamoDB.
+#
+### API Gateway Configuration
 
-### Static Website
-- **Route 53** to register a domain and manage DNS (jmerhi.com)
-
-- **S3 bucket** to store the files (index.html, script.js, showcv.html. style.css) 
-
-- **S3 bucket permissions** blocking ALL public access but with a policy to enable CloudFront access. 
-
-- **Static website** hosting enabled and endpoint configured with cloudfront 
-
-- **Cloudfront** for DNS resolution and caching content for secure and fast access. 
-
-- **Certificate Manager** to provision and manage a SSL/TLS certificate so I can enable HTTPS.
+- **API Name**: `VisitorCountAPI`
+- **Type**: HTTP API
+- **Route**:
+  - `/count`: Handles GET requests to interact with the Lambda function.
+- **Integration**:
+  - Connected to the `updateVisitorCount` Lambda function.
+- **Deployment**:
+  - Deployed to the `prod` stage.
+- **Security**:
+  - Cooldown mechanism implemented to limit the rate of incoming requests.
+  - Can be further secured using API keys or IAM authorizers, depending on requirements.
