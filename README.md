@@ -47,16 +47,18 @@ In this project, I developed an interactive resume website using HTML, CSS, and 
 #
 ### Lambda Function Configuration
 
+### Lambda Function Configuration in Python
 - **Function Name**: `updateVisitorCount`
-- **Runtime**: Node.js
+- **Runtime**: Python
 - **Functionality**:
-  - Interacts with the DynamoDB table `visitorcount` to increment and retrieve the visitor count.
-  - Handles cooldown logic to prevent rapid successive updates.
-- **Code Packaging**:
-  - Includes `index.js` and `node_modules` folder.
-  - Zipped and uploaded to AWS Lambda.
-- **IAM Role**:
-  - Configured with necessary permissions for accessing DynamoDB.
+  - Uses Boto3 to interact with the DynamoDB `visitorcount` table.
+  - Retrieves and updates the visitor count, implementing cooldown logic to prevent rapid successive updates.
+  - Deployed with the required dependencies and IAM role with permissions for DynamoDB access.
+- **Key Steps**:
+  1. Developed the function using Python with Boto3 for AWS SDK interaction.
+  2. Included error handling and response formatting in line with API Gateway requirements.
+  3. Packaged and deployed the function to AWS Lambda.
+  4. Tested the function's integration with DynamoDB and API Gateway.
 #
 ### API Gateway Configuration
 
