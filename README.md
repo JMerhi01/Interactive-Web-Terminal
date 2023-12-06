@@ -48,7 +48,7 @@ In this project, I developed an interactive resume website using HTML, CSS, and 
 - **Key Components**:
   - **Checkout Action**: Checks out the code from the repository.
   - **Build Step**: Optional step for building the project (e.g., compiling SCSS to CSS, building a React app).
-  - **S3 Sync Action**: Utilizes `jakejarvis/s3-sync-action@master` to synchronize the project files with the specified S3 bucket.
+  - **S3 Sync Action**: Utilizes `jakejarvis/s3-sync-action@master` to synchronize the project files with the specified S3 bucket. jakejarvis's s3-sync-action... is a marketplace action you can use to sync S3 buckets. 
 
 - **Configuration Details**:
   - **Trigger**: Configured to run on push events to the `main` branch (can be adjusted to other branches as needed).
