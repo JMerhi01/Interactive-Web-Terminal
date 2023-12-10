@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Welcome to the Interactive Terminal Website project! This project is an exciting blend of web development skills and cloud architecture, with a focus on AWS services. The core concept revolves around creating an interactive, dynamic curriculum vitae (CV) as a terminal-style website, backed by robust backend infrastructure.
+Welcome to the Interactive Terminal Website project! This project is an exciting blend of web development skills and cloud architecture, with a focus on AWS services. The core concept revolves around creating an interactive CV as a terminal-style website, backed by backend infrastructure.
 
 ## Project Description
 
@@ -10,17 +10,17 @@ In this project, I developed an interactive CV website using HTML, CSS, and Java
 
 ## Key Features
 
-- **HTML CV**: A web-based CV coded in HTML.
-- **CSS Styling**: Enhanced visual appeal using CSS.
-- **Static Website on Amazon S3**: Deployment of web assets on AWS S3 for hosting.
-- **HTTPS Security**: Secured access through HTTPS, implemented using Amazon CloudFront.
-- **Custom Domain via Route 53**: Utilised Amazon Route 53 for domain management (`jmerhi.com`).
-- **Dynamic Visitor Counter**: JavaScript-based visitor counting mechanism.
-- **Database Integration**: Used Amazon DynamoDB for storing and managing visitor data.
-- **API Implementation**: Created an API using AWS Lambda and API Gateway for backend communication.
-- **Infrastructure as Code**: Managed AWS resources using AWS Serverless Application Model (SAM) and Terraform.
-- **Version Control**: Code maintained and version-controlled using GitHub.
-- **CI/CD Pipeline**: Automated deployment and updates using GitHub Actions.
+- **HTML CV**: Interactive CV designed with HTML.
+- **CSS Styling**: Styling for aesthetics and responsiveness.
+- **Amazon S3 Hosting**: Static website assets hosted on AWS S3.
+- **HTTPS Security**: Website secured with HTTPS using Amazon CloudFront.
+- **Custom Domain**: `jmerhi.com` managed via Amazon Route 53.
+- **Dynamic Visitor Counter**: Visitor tracking implemented with JavaScript.
+- **DynamoDB Integration**: Visitor data stored and managed in Amazon DynamoDB.
+- **AWS Lambda and API Gateway**: Backend API for efficient data handling.
+- **Infrastructure as Code**: Utilised AWS SAM and Terraform for infrastructure management.
+- **GitHub Version Control**: Project codebase maintained on GitHub.
+- **CI/CD with GitHub Actions**: Automated deployment pipeline implemented.
 
 ## Infrastructure and Services
 
@@ -65,6 +65,7 @@ In this project, I developed an interactive CV website using HTML, CSS, and Java
   "id": { "S": "mainPage" },
   "count": { "N": "0" }
 }
+```
 #
 ### Lambda Function Configuration
 
